@@ -10,10 +10,10 @@ using WebApi.ToDoList.Models;
 namespace WebApi.ToDoList.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTestTask
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethodConnection()
         {
             var conex = ToDoApp_Db.getInstance().singleton;
         }

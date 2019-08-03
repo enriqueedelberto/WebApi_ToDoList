@@ -13,23 +13,22 @@ namespace WebApi.ToDoList.Database
 {
     public class ToDoApp_Db 
     {
-        private static ToDoApp_Db instance = new ToDoApp_Db();
+        private static ToDoApp_Db instance = null;
         public DbConnection singleton = null;
-        public static readonly string DB_CONFIG = "Task_DB";
+        public static readonly string DB_CONFIG = "WebApiToDoList_DB";
         private IDbConnection _connection;
 
 
         private ToDoApp_Db()
         {
             singleton = new SqlConnection(ConnectionStringWebAPI());
-            _connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnectionString"].ConnectionString.ToString());
-            _connection.Open();
+           
         }
 
         public static string ConnectionStringWebAPI()
         {
 
-            var stringConnection = ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings[DB_CONFIG]];
+            var stringConnection = ConfigurationManager.ConnectionStrings["WebApiToDoList_DB"];
 
             if (stringConnection == null)
             {
@@ -41,7 +40,7 @@ namespace WebApi.ToDoList.Database
 
         public static ToDoApp_Db getInstance()
         {
-            if (instance != null)
+            if (instance == null)
                 instance = new ToDoApp_Db();
 
             return instance;

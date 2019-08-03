@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.ToDoList.Database", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.ToDoList.Entities", "WebApi.ToDoList.Entities\WebApi.ToDoList.Entities.csproj", "{1FB42D85-46C5-4D07-BE72-16CE2202DBD6}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WebApi.ToDoList.SQL", "WebApi.ToDoList.SQL\WebApi.ToDoList.SQL.sqlproj", "{75CFCC53-5F24-406C-95C8-DD2D0496C9A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,12 @@ Global
 		{1FB42D85-46C5-4D07-BE72-16CE2202DBD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FB42D85-46C5-4D07-BE72-16CE2202DBD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FB42D85-46C5-4D07-BE72-16CE2202DBD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75CFCC53-5F24-406C-95C8-DD2D0496C9A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75CFCC53-5F24-406C-95C8-DD2D0496C9A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75CFCC53-5F24-406C-95C8-DD2D0496C9A3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{75CFCC53-5F24-406C-95C8-DD2D0496C9A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75CFCC53-5F24-406C-95C8-DD2D0496C9A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75CFCC53-5F24-406C-95C8-DD2D0496C9A3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +50,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DB052A67-E050-4A0F-B505-884EF079B947} = {F106174B-A9C8-4D6D-A0CB-631CAFCB4CA0}
 		{1FB42D85-46C5-4D07-BE72-16CE2202DBD6} = {F106174B-A9C8-4D6D-A0CB-631CAFCB4CA0}
+		{75CFCC53-5F24-406C-95C8-DD2D0496C9A3} = {F106174B-A9C8-4D6D-A0CB-631CAFCB4CA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4BC0C17-36F1-4868-A46D-9DBBCDA8A192}
