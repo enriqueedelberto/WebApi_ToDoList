@@ -60,9 +60,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebApi.ToDoList.Database\WebApi.ToDoList.Database.csproj">
+      <Project>{DB052A67-E050-4A0F-B505-884EF079B947}</Project>
+      <Name>WebApi.ToDoList.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApi.ToDoList.Entities\WebApi.ToDoList.Entities.csproj">
+      <Project>{1FB42D85-46C5-4D07-BE72-16CE2202DBD6}</Project>
+      <Name>WebApi.ToDoList.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebApi.ToDoList\WebApi.ToDoList.csproj">
       <Project>{9C045326-3BA6-4872-9DC2-00D9E66A9C38}</Project>
       <Name>WebApi.ToDoList</Name>
