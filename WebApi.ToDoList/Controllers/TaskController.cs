@@ -13,6 +13,10 @@ namespace WebApi.ToDoList.Controllers
     [RoutePrefix("api/Task")]
     public class TaskController : ApiController
     {
+        public TaskController() {
+
+        }
+
         [HttpGet]
         [Route("GetTasks")]
         public HttpResponseMessage GetAllTasks([FromBody] GetTaskViewModel task, [FromUri]int pageIndex =1,[FromUri] int pageSize=10)

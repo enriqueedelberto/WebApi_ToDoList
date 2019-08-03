@@ -20,24 +20,28 @@ namespace WebApi.ToDoList.Tests
 
 
         [TestMethod]
-        public void TestMethodApiUser_ListUsers()
+        public void TestMethodApiUser_ListTasks()
         {
-            var contrlUser = new UserController();
+            var contrlTask = new TaskController();
             //var conex = ToDoList_DB.getInstance().singleton;
 
-            var user = new GetUserViewModel()
+            var task = new GetTaskViewModel()
             {
                 cd_user = "",
                 createdOnDate = DateTime.Now,
-                nm_user = "Me",
+                title_task = "Me",
+                cd_task = "123",
                 pageIndex = 1,
                 pageTotal = 3
 
 
             };
+
+            
+            var response = contrlTask.GetAllTasks(task);
             // var lstUsers = contrlUser.GetAllUsers(user);
 
-            Assert.AreEqual(HttpStatusCode.BadRequest, "404");
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
 
