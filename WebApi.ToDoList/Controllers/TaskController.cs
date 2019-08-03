@@ -15,7 +15,7 @@ namespace WebApi.ToDoList.Controllers
     {
         [HttpGet]
         [Route("GetTasks")]
-        public HttpResponseMessage GetAllTasks([FromBody] GetTaskViewModel task)
+        public HttpResponseMessage GetAllTasks([FromBody] GetTaskViewModel task, [FromUri]int pageIndex =1,[FromUri] int pageSize=10)
         {
             try
             {
@@ -25,12 +25,12 @@ namespace WebApi.ToDoList.Controllers
                                                                                 iVch_status_task: task.status_task,
                                                                                 iVch_title_task: task.title_task,
                                                                                 iVch_cd_user: task.cd_user,
-                                                                                pageIndex: task.pageIndex,
-                                                                                         pageTotal: task.pageTotal);
+                                                                                pageIndex: pageIndex,
+                                                                                         pageSize: pageSize);
 
                 var vTest = new
                 {
-                    data = resp
+                    data = resp.FirstOrDefault()
                 };
 
                 return Request.CreateResponse(HttpStatusCode.OK, vTest);
@@ -48,11 +48,11 @@ namespace WebApi.ToDoList.Controllers
             try
             {
                 ToDoApp_Db.getInstance().singleton.As<Task_DB>().pr_task_save(
-                              iVch_cd_task: task.cd_task,
-                              iVch_title_task: task.title_task,
-                              iVch_status_task: task.status_task,
-                              iVch_cd_user: task.cd_user,
-                              iVch_desc_task: task.desc_task
+                              cdTask: task.cd_task,
+                              titletask: task.title_task,
+                              statustask: task.status_task,
+                              cdUser: task.cd_user,
+                              dstasks: task.desc_task
                      );
 
                 var vTest = new
@@ -75,11 +75,13 @@ namespace WebApi.ToDoList.Controllers
             try
             {
                 ToDoApp_Db.getInstance().singleton.As<Task_DB>().pr_task_update(
-                              iVch_cd_task: task.cd_task,
-                              iVch_title_task: task.title_task,
-                              iVch_status_task: task.status_task,
-                              iVch_cd_user: task.cd_user,
-                              iVch_desc_task: task.desc_task
+                              idTask: task.id_task,
+                              cdTask: task.cd_task,
+                              titletask: task.title_task,
+                              statustask: task.status_task,
+                              cdUser: task.cd_user,
+                              dstasks: task.desc_task,
+                              createTaskOnDate: DateTime.Now
                      );
 
                 var vTest = new
@@ -102,9 +104,9 @@ namespace WebApi.ToDoList.Controllers
             try
             {
                 ToDoApp_Db.getInstance().singleton.As<Task_DB>().pr_task_changeStatus(
-                              iVch_cd_task: task.cd_task,
+                              idTask: task.cd_task,
 
-                              iVch_status_task: task.status_task
+                              statustask: task.status_task
 
                      );
 
@@ -128,9 +130,9 @@ namespace WebApi.ToDoList.Controllers
             try
             {
                 ToDoApp_Db.getInstance().singleton.As<Task_DB>().pr_task_assignUser(
-                              iVch_cd_task: task.cd_task,
-
-                              iVch_cd_user: task.cd_user
+                              idTask: task.id_task, 
+                              cdUser: task.cd_user,
+                              createTaskOnDate: DateTime.Now
 
                      );
 
@@ -154,9 +156,10 @@ namespace WebApi.ToDoList.Controllers
             try
             {
                 ToDoApp_Db.getInstance().singleton.As<Task_DB>().pr_task_removeUser(
-                              iVch_cd_task: task.cd_task,
+                              idTask: task.id_task,
 
-                              iVch_cd_user: task.cd_user
+                              cdUser: task.cd_user,
+                              createTaskOnDate: DateTime.Now
 
                      );
 

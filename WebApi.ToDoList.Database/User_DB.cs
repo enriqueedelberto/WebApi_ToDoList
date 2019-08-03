@@ -12,16 +12,17 @@ namespace WebApi.ToDoList.Database
     public interface User_DB : IDbConnection, IDbTransaction
     {
         [Sql("pr_user_list", CommandType.StoredProcedure)]
-        List<User> pr_user_list(string iVch_cd_user,
-                                string iVch_nm_user,
+        List<User> pr_user_list(string cdUser,
+                                string nmUser,
 
                                 int? pageIndex = null,
-                                int? pageTotal = null);
+                                int? pageSize = null);
 
         [Sql("pr_user_save", CommandType.StoredProcedure)]
-        void pr_user_save(string iVch_cd_user,
-                          string iVch_nm_user
-
+        void pr_user_save(string cdUser,
+                          string nmUser,
+                          string dsUser,
+                          DateTime createUserOnDate
 
                             );
     }

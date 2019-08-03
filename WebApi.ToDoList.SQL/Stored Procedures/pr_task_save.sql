@@ -7,7 +7,7 @@
 CREATE PROCEDURE pr_task_save
 	-- Add the parameters for the stored procedure here
 	     @cdTask VARCHAR(255) = NULL,
-	     @titletask VARCHAR(255),
+	     @titletask VARCHAR(255)=NULL,
 	     @dstasks VARCHAR(255),
 	     @statustask VARCHAR(255),  
 		 @cdUser VARCHAR(255) = NULL, 

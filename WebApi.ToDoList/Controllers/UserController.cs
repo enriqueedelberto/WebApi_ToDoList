@@ -24,10 +24,10 @@ namespace WebApi.ToDoList.Controllers
         {
             try
             {
-                var resp = ToDoApp_Db.getInstance().singleton.As<User_DB>().pr_user_list(iVch_cd_user: user.cd_user,
-                                                                                          iVch_nm_user: user.cd_user,
+                var resp = ToDoApp_Db.getInstance().singleton.As<User_DB>().pr_user_list(cdUser: user.cd_user,
+                                                                                          nmUser: user.cd_user,
                                                                                           pageIndex: user.pageIndex,
-                                                                                          pageTotal: user.pageTotal);
+                                                                                          pageSize: user.pageTotal);
 
                 var vTest = new
                 {
@@ -48,8 +48,10 @@ namespace WebApi.ToDoList.Controllers
         {
             try
             {
-                ToDoApp_Db.getInstance().singleton.As<User_DB>().pr_user_save(iVch_cd_user: user.cd_user,
-                                                                                          iVch_nm_user: user.cd_user);
+                ToDoApp_Db.getInstance().singleton.As<User_DB>().pr_user_save(cdUser: user.cd_user,
+                                                                                          nmUser: user.nm_user,
+                                                                                          dsUser: user.nm_user,
+                                                                                          createUserOnDate: DateTime.Now);
 
                 var vTest = new
                 {

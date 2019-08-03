@@ -15,14 +15,16 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
+
+
 CREATE PROCEDURE pr_task_list 
 	-- Add the parameters for the stored procedure here
 	     @idTask INT = NULL,
 		 @cdTask INT = NULL,
-		 @cdUser VARCHAR(255),
-		 @titletask VARCHAR(255), 
-		 @statustask VARCHAR(255), 
-		 @createTaskOnDate DATE,
+		 @cdUser VARCHAR(255)=NULL,
+		 @titletask VARCHAR(255)=NULL, 
+		 @statustask VARCHAR(255)= NULL, 
+		 @createTaskOnDate DATE=NULL,
 	@PageNumber	INT = 1,
 	@PageSize	INT = 10
 		 

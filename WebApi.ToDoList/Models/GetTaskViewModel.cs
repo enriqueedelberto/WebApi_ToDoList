@@ -5,8 +5,10 @@ using System.Web;
 
 namespace WebApi.ToDoList.Models
 {
+ 
     public class GetTaskViewModel
     {
+        
         public string cd_task { get; set; }
         public string id_task { get; set; }
         public string title_task { get; set; }

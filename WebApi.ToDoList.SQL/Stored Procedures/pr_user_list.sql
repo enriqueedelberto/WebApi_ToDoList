@@ -17,9 +17,11 @@
 -- =============================================
 CREATE PROCEDURE pr_user_list
 	-- Add the parameters for the stored procedure here
-	 @idUser INT = NULL, 
+	 @cdUser INT = NULL, 
 	 @nmuser VARCHAR(255), 
-	 @createTaskOnDate DATE = NULL
+	 @createTaskOnDate DATE = NULL,
+	@PageNumber	INT = 1,
+	@PageSize	INT = 10
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -32,10 +34,13 @@ BEGIN
           ,[nm_user]
           ,[ds_user]
           ,[createOnDate]
-          ,[lastModifiedOnDate]
+          ,[lastModifiedOnDate],
+           TotalRecords = COUNT(1) OVER()
    FROM dbo.[Users]
-   WHERE @idUser IS NULL OR [id_user] = @idUser
+   WHERE @cdUser IS NULL OR [cd_user] = @cdUser
         AND @nmuser IS NULL OR [nm_user] = @nmuser
 		AND @createTaskOnDate IS NULL OR [createOnDate] = @createTaskOnDate
+		 order by [createOnDate] desc
+		  OFFSET (@PageNumber-1)*ISNULL(@PageSize,1) ROWS FETCH NEXT ISNULL(@PageSize,@@ROWCOUNT) ROWS ONLY
 END
 GO
