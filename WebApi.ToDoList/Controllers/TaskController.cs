@@ -5,12 +5,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WebApi.ToDoList.Database;
 using WebApi.ToDoList.Entities.Enums;
 using WebApi.ToDoList.Models;
 
 namespace WebApi.ToDoList.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Task")]
     public class TaskController : ApiController
     {
