@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using WebApi.ToDoList.App_Start;
 
 namespace WebApi.ToDoList
 {
@@ -13,6 +14,8 @@ namespace WebApi.ToDoList
             //enable cors
             var cors = new EnableCorsAttribute("*","*","*");
             config.EnableCors(cors);
+
+            config.MessageHandlers.Add(new PreflightRequestsHandler()); // Defined above
 
             // Web API configuration and services
 

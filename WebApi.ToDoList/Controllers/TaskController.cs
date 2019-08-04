@@ -22,7 +22,7 @@ namespace WebApi.ToDoList.Controllers
 
         [HttpGet]
         [Route("GetTasks")]
-        public HttpResponseMessage GetAllTasks([FromBody] GetTaskViewModel task, [FromUri]int pageIndex =1,[FromUri] int pageSize=10)
+        public HttpResponseMessage GetAllTasks([FromUri] GetTaskViewModel task, [FromUri]int pageIndex =1,[FromUri] int pageSize=10)
         {
             try
             {
