@@ -6,11 +6,11 @@ using System.Web;
 namespace WebApi.ToDoList.Models
 {
  
-    public class GetTaskViewModel
+    public class TaskViewModel
     {
         
         public string cd_task { get; set; }
-        public int? id_task { get; set; }
+        public string id_task { get; set; }
         public string title_task { get; set; }
         public string desc_task { get; set; }
         public string status_task { get; set; }
@@ -18,7 +18,6 @@ namespace WebApi.ToDoList.Models
         public DateTime createdOnDate { get; set; }
         public DateTime lasModifiedOnDate { get; set; }
 
-        public int pageIndex { get; set; }
-        public int pageTotal { get; set; }
+        
     }
 }

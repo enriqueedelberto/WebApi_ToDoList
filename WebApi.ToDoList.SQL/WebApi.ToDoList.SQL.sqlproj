@@ -59,6 +59,7 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Stored Procedures" />
+    <Folder Include="Test_Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Users.sql" />
@@ -71,5 +72,8 @@
     <Build Include="Stored Procedures\pr_task_update.sql" />
     <Build Include="Stored Procedures\pr_user_list.sql" />
     <Build Include="Stored Procedures\pr_user_save.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Test_Stored Procedures\Test Stored Procedures.sql" />
   </ItemGroup>
 </Project>

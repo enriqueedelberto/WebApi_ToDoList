@@ -8,9 +8,9 @@ CREATE PROCEDURE pr_task_update
 	-- Add the parameters for the stored procedure here
 	     @idTask INT = NULL,
 	     @cdTask VARCHAR(255) = NULL,
-	     @titletask VARCHAR(255),
-	     @dstasks VARCHAR(255),
-	     @statustask VARCHAR(255),  
+	     @titletask VARCHAR(255)= NULL,
+	     @dstasks VARCHAR(255)= NULL,
+	     @statustask VARCHAR(255)= NULL,
 		 @cdUser VARCHAR(255) = NULL, 
 		 @createTaskOnDate DATE = null
 AS

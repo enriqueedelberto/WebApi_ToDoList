@@ -20,21 +20,23 @@ namespace WebApi.ToDoList.Controllers
 
         [HttpGet]
         [Route("GetUsers")]
-        public HttpResponseMessage GetAllUsers([FromBody] GetUserViewModel user)
+        public HttpResponseMessage GetAllUsers([FromBody] GetUserViewModel user, [FromUri]int pageIndex = 1, [FromUri] int pageSize = 10)
         {
             try
             {
                 var resp = ToDoApp_Db.getInstance().singleton.As<User_DB>().pr_user_list(cdUser: user.cd_user,
-                                                                                          nmUser: user.cd_user,
-                                                                                          pageIndex: user.pageIndex,
-                                                                                          pageSize: user.pageTotal);
+                                                                                          nmUser: user.nm_user,
+                                                                                          pageIndex: pageIndex,
+                                                                                          pageSize: pageSize);
 
-                var vTest = new
+                var response = new
                 {
-                    data = resp
+                    data = resp.ToList(),
+                    pageIndex = pageIndex,
+                    pageSize = pageSize
                 };
 
-                return Request.CreateResponse(HttpStatusCode.OK, vTest);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception ex)
             {
@@ -44,21 +46,22 @@ namespace WebApi.ToDoList.Controllers
 
         [HttpPost]
         [Route("SaveUser")]
-        public HttpResponseMessage SaveUser([FromBody] GetUserViewModel user)
+        public HttpResponseMessage SaveUser([FromBody] UserViewModel user)
         {
             try
             {
                 ToDoApp_Db.getInstance().singleton.As<User_DB>().pr_user_save(cdUser: user.cd_user,
                                                                                           nmUser: user.nm_user,
-                                                                                          dsUser: user.nm_user,
+                                                                                          dsUser: user.ds_user,
                                                                                           createUserOnDate: DateTime.Now);
 
-                var vTest = new
+                var response = new
                 {
-                    data = "Successfull"
+                    data = "Successfull",
+                    user = user
                 };
 
-                return Request.CreateResponse(HttpStatusCode.OK, vTest);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception ex)
             {

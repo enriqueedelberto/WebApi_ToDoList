@@ -18,7 +18,7 @@
 CREATE PROCEDURE pr_user_list
 	-- Add the parameters for the stored procedure here
 	 @cdUser INT = NULL, 
-	 @nmuser VARCHAR(255), 
+	 @nmuser VARCHAR(255)= null, 
 	 @createTaskOnDate DATE = NULL,
 	@PageNumber	INT = 1,
 	@PageSize	INT = 10
@@ -37,9 +37,9 @@ BEGIN
           ,[lastModifiedOnDate],
            TotalRecords = COUNT(1) OVER()
    FROM dbo.[Users]
-   WHERE @cdUser IS NULL OR [cd_user] = @cdUser
-        AND @nmuser IS NULL OR [nm_user] = @nmuser
-		AND @createTaskOnDate IS NULL OR [createOnDate] = @createTaskOnDate
+   WHERE (@cdUser IS NULL OR [cd_user] = @cdUser)
+        AND (@nmuser IS NULL OR [nm_user] = @nmuser)
+		AND (@createTaskOnDate IS NULL OR [createOnDate] = @createTaskOnDate)
 		 order by [createOnDate] desc
 		  OFFSET (@PageNumber-1)*ISNULL(@PageSize,1) ROWS FETCH NEXT ISNULL(@PageSize,@@ROWCOUNT) ROWS ONLY
 END

@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebApi.ToDoList.Database;
+using WebApi.ToDoList.Entities.Enums;
 using WebApi.ToDoList.Models;
 
 namespace WebApi.ToDoList.Controllers
@@ -24,20 +25,23 @@ namespace WebApi.ToDoList.Controllers
             try
             {
                 var resp = ToDoApp_Db.getInstance().singleton.As<Task_DB>().pr_task_list(
-                                                                                iVch_cd_task: task.cd_task,
-                                                                                iVch_fecha: task.createdOnDate,
-                                                                                iVch_status_task: task.status_task,
-                                                                                iVch_title_task: task.title_task,
-                                                                                iVch_cd_user: task.cd_user,
+                                                                                idTask: task.id_task,
+                                                                                cdTask: task.cd_task,
+                                                                                createTaskOnDate: task.createdOnDate,
+                                                                                statustask: task.status_task,
+                                                                                titletask: task.title_task,
+                                                                                cdUser: task.cd_user,
                                                                                 pageIndex: pageIndex,
                                                                                          pageSize: pageSize);
 
-                var vTest = new
+                var response = new
                 {
-                    data = resp.FirstOrDefault()
+                    data = resp.ToList(),
+                    pageIndex = pageIndex,
+                    pageSize = pageSize
                 };
 
-                return Request.CreateResponse(HttpStatusCode.OK, vTest);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception ex)
             {
@@ -47,7 +51,7 @@ namespace WebApi.ToDoList.Controllers
 
         [HttpPost]
         [Route("saveTask")]
-        public HttpResponseMessage SaveTask([FromBody] GetTaskViewModel task)
+        public HttpResponseMessage SaveTask([FromBody] TaskViewModel task)
         {
             try
             {
@@ -59,12 +63,12 @@ namespace WebApi.ToDoList.Controllers
                               dstasks: task.desc_task
                      );
 
-                var vTest = new
+                var response = new
                 {
                     data = "Success"
                 };
 
-                return Request.CreateResponse(HttpStatusCode.OK, vTest);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception ex)
             {
@@ -74,7 +78,7 @@ namespace WebApi.ToDoList.Controllers
 
         [HttpPost]
         [Route("updateTask")]
-        public HttpResponseMessage UpdateTask([FromBody] GetTaskViewModel task)
+        public HttpResponseMessage UpdateTask([FromBody] TaskViewModel task)
         {
             try
             {
@@ -103,13 +107,12 @@ namespace WebApi.ToDoList.Controllers
 
         [HttpPost]
         [Route("changeStatusTask")]
-        public HttpResponseMessage ChangeStatusTask([FromBody] GetTaskViewModel task)
+        public HttpResponseMessage ChangeStatusTask([FromBody] TaskViewModel task)
         {
             try
             {
                 ToDoApp_Db.getInstance().singleton.As<Task_DB>().pr_task_changeStatus(
-                              idTask: task.cd_task,
-
+                              idTask: task.id_task, 
                               statustask: task.status_task
 
                      );
@@ -129,7 +132,7 @@ namespace WebApi.ToDoList.Controllers
 
         [HttpPost]
         [Route("assignUserToTask")]
-        public HttpResponseMessage AssignUserToTask([FromBody] GetTaskViewModel task)
+        public HttpResponseMessage AssignUserToTask([FromBody] TaskViewModel task)
         {
             try
             {
@@ -155,7 +158,7 @@ namespace WebApi.ToDoList.Controllers
         
         [HttpPost]
         [Route("removeUserToTask")]
-        public HttpResponseMessage RemoveUserToTask([FromBody] GetTaskViewModel task)
+        public HttpResponseMessage RemoveUserToTask([FromBody] TaskViewModel task)
         {
             try
             {
@@ -167,17 +170,31 @@ namespace WebApi.ToDoList.Controllers
 
                      );
 
-                var vTest = new
+                var response = new
                 {
                     data = "Success"
                 };
 
-                return Request.CreateResponse(HttpStatusCode.OK, vTest);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.ToString());
             }
+        }
+
+        [HttpGet]
+        [Route("GetStatuses")]
+        public HttpResponseMessage GetStatuses() {
+            var lstStatuses = Enum.GetValues(typeof(Status))
+                                         .Cast<Status>()
+                                         .Select(v => v.ToString())
+                                         .ToList();
+            var response = new {
+                   data = lstStatuses
+            };
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+
         }
     }
 }
