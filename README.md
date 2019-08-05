@@ -43,13 +43,11 @@ Paso 2: Configurar WebAPi
     –User ID: nombre de usuario del servidor de base de datos.
     –Password: contraseña de acceso al servidor de base de datos.
 	
-	El connectionString debe ser similar al siguiente:
-	<add name="WebApiToDoList_DB" connectionString="Data Source=DESKTOP-D106UMJ\MSSQLSERVER01;User ID=admin;Password=abc123$ ;Initial Catalog=ToDoList_DB;Integrated Security=True;" providerName="System.Data.SqlClient" />
+El connectionString debe ser similar al siguiente:
+<add name="WebApiToDoList_DB" connectionString="Data Source=DESKTOP-D106UMJ\MSSQLSERVER01;User ID=admin;Password=abc123$ ;Initial Catalog=ToDoList_DB;Integrated Security=True;" providerName="System.Data.SqlClient" />
 	
 	
-	
-	
-	Paso 3: Desplegar proyecto en Servidor Web IIS(Internet Information Services)
+Paso 3: Desplegar proyecto en Servidor Web IIS(Internet Information Services)
 	 Se recomiendan los pasos del siguiente enlace: https://www.c-sharpcorner.com/UploadFile/2b481f/how-to-host-Asp-Net-web-api-on-iis-server/
 	 
   
