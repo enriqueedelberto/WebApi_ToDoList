@@ -37,7 +37,7 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT [id_task],
 	       [cd_task] ,
-           [title_task],[ds_task],[status_task],[cd_user],[createOnDate],
+           [title_task],[ds_task] as desc_task,[status_task],[cd_user],[createOnDate],
            [lastModifiedOnDate],
            TotalRecords = COUNT(1) OVER()
 
