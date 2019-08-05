@@ -15,7 +15,7 @@ namespace WebApi.ToDoList
             var cors = new EnableCorsAttribute("*","*","*");
             config.EnableCors(cors);
 
-            config.MessageHandlers.Add(new PreflightRequestsHandler()); // Defined above
+            //config.MessageHandlers.Add(new PreflightRequestsHandler()); // Defined above
 
             // Web API configuration and services
 

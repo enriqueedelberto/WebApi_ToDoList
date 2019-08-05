@@ -20,7 +20,7 @@ namespace WebApi.ToDoList.Controllers
 
         [HttpGet]
         [Route("GetUsers")]
-        public HttpResponseMessage GetAllUsers([FromBody] GetUserViewModel user, [FromUri]int pageIndex = 1, [FromUri] int pageSize = 10)
+        public HttpResponseMessage GetAllUsers([FromUri] GetUserViewModel user, [FromUri]int pageIndex = 1, [FromUri] int pageSize = 10)
         {
             try
             {

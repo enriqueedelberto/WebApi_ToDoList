@@ -12,7 +12,7 @@ using WebApi.ToDoList.Models;
 
 namespace WebApi.ToDoList.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+  
     [RoutePrefix("api/Task")]
     public class TaskController : ApiController
     {
@@ -187,7 +187,7 @@ namespace WebApi.ToDoList.Controllers
 
         [HttpGet]
         [Route("GetStatuses")]
-        public HttpResponseMessage GetStatuses() {
+        public HttpResponseMessage GetStatuses(){
             var lstStatuses = Enum.GetValues(typeof(Status))
                                          .Cast<Status>()
                                          .Select(v => v.ToString())

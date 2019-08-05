@@ -45,7 +45,7 @@ BEGIN
 	FROM dbo.Tasks
 	where (@idTask IS NULL Or id_task = @idTask)
 	    and (@cdTask IS NULL Or cd_task = @cdTask)
-	      and (@titletask IS NULL OR [title_task] = @titletask)
+	      and (@titletask IS NULL OR [title_task] like '%'+@titletask+'%')
 		  and (@cdUser IS NULL OR [cd_user] = @cdUser)
 		  and (@statustask IS NULL OR [status_task] = @statustask)
 		  order by [createOnDate] desc
