@@ -50,11 +50,7 @@ Paso 2: Configurar WebAPi
 	
 	
 	Paso 3: Desplegar proyecto en Servidor Web IIS(Internet Information Services)
-	
-	3.1 Instalar Internet Information Services 
-	   Ves a Panal de control
-       Ves a «Programas»
-        Dependiendo la vista que tengas podrás darle a «Activar o desactivar las características de Windows», si no ves esa opción presiona sobre «Programas y características».
-        A la izquierda presiona sobre «Activar o desactivar las características de Windows».
+	 Se recomiendan los pasos del siguiente enlace: https://www.c-sharpcorner.com/UploadFile/2b481f/how-to-host-Asp-Net-web-api-on-iis-server/
+	 
   
   
